@@ -19,11 +19,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
 use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * Class User.
  */
-class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenticatable
+class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenticatable, JWTSubject
 {
     use HasFactory,
         HasRoles,
@@ -145,7 +146,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      */
     public function canBeImpersonated(): bool
     {
-        return ! $this->isMasterAdmin();
+        return !$this->isMasterAdmin();
     }
 
     /**
@@ -156,5 +157,25 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     protected static function newFactory()
     {
         return UserFactory::new();
+    }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
