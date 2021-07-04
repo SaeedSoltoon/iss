@@ -1,0 +1,23 @@
+version: "3"
+services:
+  iss-app:
+    build: .
+    container_name: iss
+    volumes:
+      - ./:/home/iss
+    ports:
+      - "8010:8080"
+    depends_on:
+      - iss-db
+
+  iss-db:
+    image: mysql:8.0
+    volumes:
+      - ./storage/dbdata/:/var/lib/mysql
+    restart: always
+    ports:
+      - "3360:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: issdb
+      MYSQL_PASSWORD: root
