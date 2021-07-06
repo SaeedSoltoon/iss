@@ -8,7 +8,18 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 /**
- * Class Controller.
+ * @OA\Info(
+ *      version="1.0.0",
+ *      title="Insurance Sale System APIs",
+ * )
+ *     * @OA\SecurityScheme(
+ *      securityScheme="bearerAuth",
+ *      in="header",
+ *      name="Authorization",
+ *      type="http",
+ *      scheme="Bearer",
+ *      bearerFormat="JWT",
+ * ),
  */
 class Controller extends BaseController
 {

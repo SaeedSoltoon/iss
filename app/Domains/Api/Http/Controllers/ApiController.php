@@ -19,11 +19,86 @@ class ApiController extends Controller
     }
 
     /**
-     * Get a JWT token via given credentials.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/auth/login",
+     *     tags={"auth"},
+     *     summary="Login & return token",
+     *   @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="email",
+     *           type="string",
+     *         ),
+     *         @OA\Property(
+     *           property="password",
+     *           type="string",
+     *         ),
+     *       ),
+     *     ),
+     *   ),
+     *  @OA\Response(
+     *         response="200",
+     *         description="ok",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="token",
+     *                         type="string"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="success",
+     *                         type="boolean"
+     *                     )
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *  @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="error",
+     *                         type="string"
+     *                     ),
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *  @OA\Response(
+     *         response="422",
+     *         description="Validation Error",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="errors",
+     *                         type="array",
+     *													@OA\Items(
+     *														type="object",
+     *                          	@OA\Property(property="location", type="string"),
+     *                          	@OA\Property(property="param", type="string"),
+     *														@OA\Property(property="msg", type="string"),
+     *												)
+     *                     ),
+     *                     @OA\Property(
+     *                         property="success",
+     *                         type="boolean"
+     *                     )
+     *                 )
+     *             )
+     *         }
+     *     ),
+     * )
      */
     public function login(Request $request)
     {
