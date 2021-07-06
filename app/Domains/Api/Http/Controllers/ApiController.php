@@ -15,7 +15,7 @@ class ApiController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth', ['except' => ['login']]);
     }
 
     /**
@@ -91,6 +91,6 @@ class ApiController extends Controller
      */
     public function guard()
     {
-        return Auth::guard('api');
+        return Auth::guard();
     }
 }
