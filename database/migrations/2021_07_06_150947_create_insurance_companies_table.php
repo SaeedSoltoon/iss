@@ -16,7 +16,7 @@ class CreateInsuranceCompaniesTable extends Migration
         Schema::create('insurance_companies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('description');
             $table->string('website');
             $table->string('logo');
@@ -24,6 +24,8 @@ class CreateInsuranceCompaniesTable extends Migration
             $table->unsignedBigInteger('created_by');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index('title');
 
             $table->foreign('created_by')
                 ->references('id')
