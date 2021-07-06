@@ -47,12 +47,17 @@ class ApiController extends Controller
      *                 mediaType="application/json",
      *                 @OA\Schema(
      *                     @OA\Property(
-     *                         property="token",
+     *                         property="access_token",
      *                         type="string"
      *                     ),
      *                     @OA\Property(
-     *                         property="success",
-     *                         type="boolean"
+     *                         property="token_type",
+     *                         type="string"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="expires_in",
+     *                         type="integer",
+     *                         description="number in seconds"
      *                     )
      *                 )
      *             )
@@ -69,31 +74,6 @@ class ApiController extends Controller
      *                         property="error",
      *                         type="string"
      *                     ),
-     *                 )
-     *             )
-     *         }
-     *     ),
-     *  @OA\Response(
-     *         response="422",
-     *         description="Validation Error",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *                 @OA\Schema(
-     *                     @OA\Property(
-     *                         property="errors",
-     *                         type="array",
-     *													@OA\Items(
-     *														type="object",
-     *                          	@OA\Property(property="location", type="string"),
-     *                          	@OA\Property(property="param", type="string"),
-     *														@OA\Property(property="msg", type="string"),
-     *												)
-     *                     ),
-     *                     @OA\Property(
-     *                         property="success",
-     *                         type="boolean"
-     *                     )
      *                 )
      *             )
      *         }

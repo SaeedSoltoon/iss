@@ -37,11 +37,15 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "token": {
+                                        "access_token": {
                                             "type": "string"
                                         },
-                                        "success": {
-                                            "type": "boolean"
+                                        "token_type": {
+                                            "type": "string"
+                                        },
+                                        "expires_in": {
+                                            "description": "number in seconds",
+                                            "type": "integer"
                                         }
                                     },
                                     "type": "object"
@@ -57,38 +61,6 @@
                                     "properties": {
                                         "error": {
                                             "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "errors": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "location": {
-                                                        "type": "string"
-                                                    },
-                                                    "param": {
-                                                        "type": "string"
-                                                    },
-                                                    "msg": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
-                                        },
-                                        "success": {
-                                            "type": "boolean"
                                         }
                                     },
                                     "type": "object"
