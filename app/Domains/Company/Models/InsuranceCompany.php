@@ -10,4 +10,12 @@ class InsuranceCompany extends Model
 {
     use HasFactory,
         SoftDeletes;
+
+    /**
+     * The Insurances(products) that belong to this Insurance Company.
+     */
+    public function insurances()
+    {
+        return $this->belongsToMany(Insurance::class);
+    }
 }
