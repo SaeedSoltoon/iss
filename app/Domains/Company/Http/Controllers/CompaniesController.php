@@ -76,8 +76,8 @@ class CompaniesController extends Controller
      */
     public function update(StoreCompanyRequest $request, $companyId)
     {
-        $company = $this->companyService->getById($companyId);
-        $company->update(
+        $this->companyService->update(
+            $this->companyService->getById($companyId),
             $request->validated()
         );
     }

@@ -65,16 +65,16 @@ class InsuranceService extends BaseService
     /**
      * @param  array  $data
      *
-     * @return Insurance
+     * @return bool
      * @throws GeneralException
      * @throws \Throwable
      */
-    public function update(array $data = []): Insurance
+    public function update(Insurance $insurance, array $data = []): bool
     {
         DB::beginTransaction();
 
         try {
-            $insurance = $this->updateInsurance($data);
+            $insurance = $this->updateInsurance($insurance, $data);
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -91,9 +91,9 @@ class InsuranceService extends BaseService
      *
      * @return Boolean
      */
-    protected function updateInsurance(array $data = []): bool
+    protected function updateInsurance(Insurance $insurance, array $data = []): bool
     {
-        return $this->model->update([
+        return $insurance->update([
             'title'         => $data['title'],
             'description'   => $data['description'],
         ]);

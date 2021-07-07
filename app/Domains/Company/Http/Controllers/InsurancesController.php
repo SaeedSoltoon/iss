@@ -75,7 +75,10 @@ class InsurancesController extends Controller
      */
     public function update(StoreInsuranceRequest $request, $insuranceId)
     {
-        return $this->insuranceService->update($request->validated());
+        return $this->insuranceService->update(
+            $this->insuranceService->getById($insuranceId),
+            $request->validated()
+        );
     }
 
     /**
