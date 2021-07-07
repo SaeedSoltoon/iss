@@ -4,7 +4,6 @@ namespace App\Domains\Company\Http\Controllers;
 
 use App\Domains\Company\Http\Requests\StoreInsuranceRequest;
 use App\Domains\Company\Services\InsuranceService;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class InsurancesController extends Controller
@@ -34,7 +33,7 @@ class InsurancesController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/InsuraceResource")
+     *          @OA\JsonContent(ref="#/components/schemas/InsuranceResource")
      *       ),
      *      @OA\Response(
      *          response=401,

@@ -285,7 +285,14 @@
                 "operationId": "getInsuranceCompanyList",
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InsuranceCompanyResource"
+                                }
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -335,9 +342,247 @@
                     }
                 }
             }
+        },
+        "/api/insurance": {
+            "get": {
+                "tags": [
+                    "Insurances"
+                ],
+                "summary": "Get list of Insurances",
+                "description": "Returns list of Insurances",
+                "operationId": "getInsuranceList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InsuranceResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/insurance/{insuranceId}/delete": {
+            "delete": {
+                "tags": [
+                    "Insurances"
+                ],
+                "summary": "Delete existing Insurance",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteInsurance",
+                "parameters": [
+                    {
+                        "name": "insuranceId",
+                        "in": "path",
+                        "description": "insurance id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
         }
     },
     "components": {
+        "schemas": {
+            "Insurance": {
+                "title": "Insurance",
+                "description": "Insurance model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "title of the new insurance company",
+                        "type": "string",
+                        "example": "Iran Insurance"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "description": "Description of the new insurance company",
+                        "type": "string",
+                        "example": "This is new insurance company's description"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "deleted_at": {
+                        "title": "Deleted at",
+                        "description": "Deleted at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "created_by": {
+                        "title": "creator ID",
+                        "description": "Creator's id of the new Insurance Company",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Insurance"
+                }
+            },
+            "InsuranceCompany": {
+                "title": "Insurance Company",
+                "description": "Insurance Company model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "title of the new insurance company",
+                        "type": "string",
+                        "example": "Iran Insurance"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "description": "Description of the new insurance company",
+                        "type": "string",
+                        "example": "This is new insurance company's description"
+                    },
+                    "website": {
+                        "title": "website",
+                        "description": "website of the new insurance company",
+                        "type": "string",
+                        "example": "https://iraninsurance.ir"
+                    },
+                    "logo": {
+                        "title": "logo",
+                        "description": "logo of the new insurance company",
+                        "type": "string",
+                        "example": "https://iraninsurance.ir/logo.png"
+                    },
+                    "bio": {
+                        "title": "bio",
+                        "description": "bio of the new insurance company",
+                        "type": "string",
+                        "example": "Iran Insurance bio text..."
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "deleted_at": {
+                        "title": "Deleted at",
+                        "description": "Deleted at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "created_by": {
+                        "title": "creator ID",
+                        "description": "Creator's id of the new Insurance Company",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "InsuranceCompany"
+                }
+            },
+            "InsuranceCompanyResource": {
+                "title": "InsuranceCompanyResource",
+                "description": "Insurance Company resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/InsuranceCompany"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "InsuranceCompanyResource"
+                }
+            },
+            "InsuranceResource": {
+                "title": "InsuranceResource",
+                "description": "Insurance resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Insurance"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "InsuranceResource"
+                }
+            }
+        },
         "securitySchemes": {
             "bearerAuth": {
                 "type": "http",

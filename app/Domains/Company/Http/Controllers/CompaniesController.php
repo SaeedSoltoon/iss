@@ -35,7 +35,7 @@ class CompaniesController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/InsuraceCompanyResource")
+     *          @OA\JsonContent(ref="#/components/schemas/InsuranceCompanyResource")
      *       ),
      *      @OA\Response(
      *          response=401,

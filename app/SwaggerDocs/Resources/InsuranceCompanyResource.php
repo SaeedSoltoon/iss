@@ -19,7 +19,7 @@ class InsuranceCompanyResource
      *     description="Data wrapper"
      * )
      *
-     * @var \App\Virtual\Models\Project[]
+     * @var \App\SwaggerDocs\Models\InsuranceCompany[]
      */
     private $data;
 }
