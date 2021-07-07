@@ -25,6 +25,28 @@ class InsurancesController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *      path="/api/insurance",
+     *      operationId="getInsuranceList",
+     *      tags={"Insurances"},
+     *      summary="Get list of Insurances",
+     *      description="Returns list of Insurances",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/InsuraceResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     *
+     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -82,6 +104,40 @@ class InsurancesController extends Controller
     }
 
     /**
+     * @OA\Delete(
+     *      path="/api/insurance/{insuranceId}/delete",
+     *      operationId="deleteInsurance",
+     *      tags={"Insurances"},
+     *      summary="Delete existing Insurance",
+     *      description="Deletes a record and returns no content",
+     *      @OA\Parameter(
+     *          name="insuranceId",
+     *          description="insurance id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
+     *
      * Remove the specified resource from storage.
      *
      * @param  int  $id
