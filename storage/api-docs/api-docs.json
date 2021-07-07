@@ -84,71 +84,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "user": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "number"
-                                                },
-                                                "type": {
-                                                    "type": "string"
-                                                },
-                                                "name": {
-                                                    "type": "string"
-                                                },
-                                                "email": {
-                                                    "type": "string"
-                                                },
-                                                "email_verified_at": {
-                                                    "type": "datetime"
-                                                },
-                                                "password_changed_at": {
-                                                    "type": "datetime"
-                                                },
-                                                "active": {
-                                                    "type": "boolean"
-                                                },
-                                                "timezone": {
-                                                    "type": "string"
-                                                },
-                                                "last_login_at": {
-                                                    "type": "datetime"
-                                                },
-                                                "last_login_ip": {
-                                                    "type": "string"
-                                                },
-                                                "to_be_logged_out": {
-                                                    "type": "boolean"
-                                                },
-                                                "provider": {
-                                                    "type": "string"
-                                                },
-                                                "provider_at": {
-                                                    "type": "datetime"
-                                                },
-                                                "created_at": {
-                                                    "type": "datetime"
-                                                },
-                                                "updated_at": {
-                                                    "type": "datetime"
-                                                },
-                                                "deleted_at": {
-                                                    "type": "datetime"
-                                                },
-                                                "avatar": {
-                                                    "type": "string"
-                                                },
-                                                "permissions": {
-                                                    "type": "object"
-                                                },
-                                                "roles": {
-                                                    "type": "object"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/User"
                                 }
                             }
                         }

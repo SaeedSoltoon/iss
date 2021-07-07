@@ -100,36 +100,7 @@ class ApiController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="ok",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *                 @OA\Schema(
-     *                     @OA\Property(
-     *                         property="user",
-     *                         type="object",
-     *                         @OA\Property(property="id", type="number"),
-     *                         @OA\Property(property="type", type="string"),
-     *                         @OA\Property(property="name", type="string"),
-     *                         @OA\Property(property="email", type="string"),
-     *                         @OA\Property(property="email_verified_at", type="datetime"),
-     *                         @OA\Property(property="password_changed_at", type="datetime"),
-     *                         @OA\Property(property="active", type="boolean"),
-     *                         @OA\Property(property="timezone", type="string"),
-     *                         @OA\Property(property="last_login_at", type="datetime"),
-     *                         @OA\Property(property="last_login_ip", type="string"),
-     *                         @OA\Property(property="to_be_logged_out", type="boolean"),
-     *                         @OA\Property(property="provider", type="string"),
-     *                         @OA\Property(property="provider_at", type="datetime"),
-     *                         @OA\Property(property="created_at", type="datetime"),
-     *                         @OA\Property(property="updated_at", type="datetime"),
-     *                         @OA\Property(property="deleted_at", type="datetime"),
-     *                         @OA\Property(property="avatar", type="string"),
-     *                         @OA\Property(property="permissions",  type="object"),
-     *                         @OA\Property(property="roles", type="object"),
-     *                     )
-     *                 )
-     *             )
-     *         }
+     *         @OA\JsonContent(ref="#/components/schemas/User")
      *     ),
      *     @OA\Response(
      *         response="401",
