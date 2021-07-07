@@ -1,13 +1,40 @@
-## Laravel Boilerplate (Current: Laravel 8.*) ([Demo](https://demo.laravel-boilerplate.com))
+## Laravel Insurance Sale System
 
-[![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-boilerplate)
-[![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-boilerplate) 
-<br/>
-[![StyleCI](https://styleci.io/repos/30171828/shield?style=plastic)](https://github.styleci.io/repos/30171828)
-![Tests](https://github.com/rappasoft/laravel-boilerplate/workflows/Tests/badge.svg?branch=master)
-<br/>
-![GitHub contributors](https://img.shields.io/github/contributors/rappasoft/laravel-boilerplate.svg)
-![GitHub stars](https://img.shields.io/github/stars/rappasoft/laravel-boilerplate.svg?style=social)
+### This reposirtory is created for Backend Software Engineer (PHP) - Fintech | Assignment and Utilizes This repo as base Project Structure.([Laravel-Boilerplate](https://github.com/rappasoft/laravel-boilerplate))
+
+This project makes lite use of DDD. It is not a requirement, and you can easily refactor back to the default Laravel file structure.
+
+### Installation and Usage Instructions
+
+After cloning the repository, make sure to copy `.env.example` to `.env` and edit the params for your needs.
+_NOTE:_ If you want to use Docker setup process, make sure that `DB_HOST` param in `.env` file match the database service name that defines in `docker-compose.yml`, defaults is `iss-db`.
+If you have Docker on your machine skip below steps, and just follow the main ([Laravel-Installation-Guide](https://laravel.com/docs/8.x/installation)) guide to up and running the project.
+
+### Setup Using Docker
+
+This repository Utilizes a Makefile for easier installation process.
+
+-   Open your desire terminal and run this command.
+
+```bash
+make init
+```
+
+Above command tries to install the image and configure it for you. feel free to check it out and make changes if you want to.
+
+-   After that run this command to start the container and runs the project.
+
+```bash
+make up
+```
+
+If setup process finished successfully you should see this message in your terminal.
+
+```bash
+Insurance Sale System is running at http://127.0.0.1:8010, and you can check the api documentations at http://127.0.0.1:8010/api/documentation
+```
+
+You can check the mentioned urls in your browser, and if you want to stop it just hit `ctrl+c`.
 
 ### Demo Credentials
 
@@ -17,29 +44,9 @@
 **User:** user@user.com  
 **Password:** secret
 
-### Official Documentation
+### Official Laravel Boilerplate Documentation
 
 [Click here for the official documentation](http://laravel-boilerplate.com)
-
-### Slack Channel
-
-Please join us in our Slack channel to get faster responses to your questions. Get your invite here: https://laravel-5-boilerplate.herokuapp.com
-
-### Introduction
-
-Laravel Boilerplate provides you with a massive head start on any size web application. Out of the box it has features like a backend built on CoreUI with Spatie/Permission authorization. It has a frontend scaffold built on Bootstrap 4. Other features such as Two Factor Authentication, User/Role management, searchable/sortable tables built on my [Laravel Livewire tables plugin](https://github.com/rappasoft/laravel-livewire-tables), user impersonation, timezone support, multi-lingual support with 20+ built in languages, demo mode, and much more.
-
-### Issues
-
-If you come across any issues please [report them here](https://github.com/rappasoft/laravel-boilerplate/issues).
-
-### Contributing
-
-Thank you for considering contributing to the Laravel Boilerplate project! Please feel free to make any pull requests, or e-mail me a feature request you would like to see in the future to Anthony Rappa at rappa819@gmail.com.
-
-### Security Vulnerabilities
-
-If you discover a security vulnerability within this boilerplate, please send an e-mail to Anthony Rappa at rappa819@gmail.com, or create a pull request if possible. All security vulnerabilities will be promptly addressed.
 
 ### License
 
