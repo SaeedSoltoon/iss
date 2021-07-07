@@ -98,4 +98,14 @@ class Insurance
      * @var integer
      */
     public $created_by;
+
+    /**
+     * @OA\Property(
+     *     title="Companies",
+     *     description="Companies wrapper"
+     * )
+     *
+     * @var \App\SwaggerDocs\Models\InsuranceCompany[]
+     */
+    private $companies;
 }

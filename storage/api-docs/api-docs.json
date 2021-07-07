@@ -464,6 +464,14 @@
                         "type": "integer",
                         "format": "int64",
                         "example": 1
+                    },
+                    "companies": {
+                        "title": "Companies",
+                        "description": "Companies wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/InsuranceCompany"
+                        }
                     }
                 },
                 "type": "object",
@@ -539,11 +547,281 @@
                         "type": "integer",
                         "format": "int64",
                         "example": 1
+                    },
+                    "insurances": {
+                        "title": "Insurances",
+                        "description": "Insurances wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Insurance"
+                        }
                     }
                 },
                 "type": "object",
                 "xml": {
                     "name": "InsuranceCompany"
+                }
+            },
+            "Permission": {
+                "title": "Permission",
+                "description": "Permission model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type of the new permission",
+                        "type": "string",
+                        "example": "admin|permission"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name of the new permission",
+                        "type": "string",
+                        "example": "Saeed"
+                    },
+                    "guard_name": {
+                        "title": "Guard name",
+                        "description": "Guard name of the new permission",
+                        "type": "string",
+                        "example": "web"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "description of the new permission",
+                        "type": "string",
+                        "example": "Saeed"
+                    },
+                    "parent_id": {
+                        "title": "Parent ID",
+                        "description": "Parent ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "sort": {
+                        "title": "Parent ID",
+                        "description": "Parent ID",
+                        "type": "integer",
+                        "format": "tinyint",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Permission"
+                }
+            },
+            "Role": {
+                "title": "Role",
+                "description": "Role model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type of the new user",
+                        "type": "string",
+                        "example": "admin|user"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name of the new user",
+                        "type": "string",
+                        "example": "Saeed"
+                    },
+                    "guard_name": {
+                        "title": "Guard name",
+                        "description": "Guard name of the new user",
+                        "type": "string",
+                        "example": "web"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "permissions": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Permission"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Role"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type of the new user",
+                        "type": "string",
+                        "example": "admin|user"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name of the new user",
+                        "type": "string",
+                        "example": "Saeed"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the new user",
+                        "type": "string",
+                        "example": "mr.saeed.soltani@gmail.com"
+                    },
+                    "active": {
+                        "title": "active",
+                        "description": "status of the new user",
+                        "type": "boolean",
+                        "example": "1|0"
+                    },
+                    "timezone": {
+                        "title": "timezone",
+                        "description": "timezone of the new user",
+                        "type": "string",
+                        "example": "UTC"
+                    },
+                    "to_be_logged_out": {
+                        "title": "to be logged out",
+                        "description": "determine user should be logged out.",
+                        "type": "boolean",
+                        "example": "1|0"
+                    },
+                    "last_login_ip": {
+                        "title": "last login IP",
+                        "description": "last login IP of the new user",
+                        "type": "string",
+                        "example": "1.2.3.4"
+                    },
+                    "eamil_verified_at": {
+                        "title": "email verified at",
+                        "description": "email verified at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "password_changed_at": {
+                        "title": "password changed at",
+                        "description": "password changed at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "provider": {
+                        "title": "provider",
+                        "description": "who is the provider of the user.",
+                        "type": "string",
+                        "example": "admin"
+                    },
+                    "provider_at": {
+                        "title": "provider at",
+                        "description": "provider at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "last_login_at": {
+                        "title": "last login at",
+                        "description": "last login at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "deleted_at": {
+                        "title": "Deleted at",
+                        "description": "Deleted at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "avatar": {
+                        "title": "avatar",
+                        "description": "avatar of the new user",
+                        "type": "string",
+                        "example": "UTC"
+                    },
+                    "permissions": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Permission"
+                        }
+                    },
+                    "roles": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Role"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
                 }
             },
             "InsuranceCompanyResource": {

@@ -131,4 +131,14 @@ class InsuranceCompany
      * @var integer
      */
     public $created_by;
+
+    /**
+     * @OA\Property(
+     *     title="Insurances",
+     *     description="Insurances wrapper"
+     * )
+     *
+     * @var \App\SwaggerDocs\Models\Insurance[]
+     */
+    private $insurances;
 }
