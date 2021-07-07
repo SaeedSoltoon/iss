@@ -12,6 +12,21 @@ class InsuranceCompany extends Model
         SoftDeletes;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+        'website',
+        'logo',
+        'bio',
+        'created_by',
+    ];
+
+    /**
      * The Insurances(products) that belong to this Insurance Company.
      */
     public function insurances()
