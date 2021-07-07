@@ -3,6 +3,7 @@
 namespace App\Domains\Company\Http\Controllers;
 
 use App\Domains\Company\Http\Requests\StoreCompanyRequest;
+
 use App\Domains\Company\Services\CompanyService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -73,9 +74,12 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $companyId)
+    public function update(StoreCompanyRequest $request, $companyId)
     {
-        return $companyId;
+        $company = $this->companyService->getById($companyId);
+        $company->update(
+            $request->validated()
+        );
     }
 
     /**
@@ -84,8 +88,8 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($companyId)
     {
-        //
+        return $this->companyService->deleteById($companyId);
     }
 }

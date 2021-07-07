@@ -7,6 +7,7 @@ use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use Exception;
+use phpDocumentor\Reflection\Types\Boolean;
 use Str;
 
 /**
@@ -36,7 +37,7 @@ class CompanyService extends BaseService
         DB::beginTransaction();
 
         try {
-            $user = $this->createCompany($data);
+            $company = $this->createCompany($data);
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -45,7 +46,7 @@ class CompanyService extends BaseService
 
         DB::commit();
 
-        return $user;
+        return $company;
     }
 
     /**
@@ -62,6 +63,46 @@ class CompanyService extends BaseService
             'logo'          => $data['logo'],
             'bio'           => $data['bio'],
             'created_by'    => auth()->id(),
+        ]);
+    }
+
+    /**
+     * @param  array  $data
+     *
+     * @return Boolean
+     * @throws GeneralException
+     * @throws \Throwable
+     */
+    public function update(array $data = []): bool
+    {
+        DB::beginTransaction();
+
+        try {
+            $company = $this->updateCompany($data);
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            throw new GeneralException(__('There was a problem updating your Insurace Company.'));
+        }
+
+        DB::commit();
+
+        return $company;
+    }
+
+    /**
+     * @param  array  $data
+     *
+     * @return Boolean
+     */
+    protected function updateCompany(array $data = []): bool
+    {
+        return $this->model->update([
+            'title'         => $data['title'],
+            'description'   => $data['description'],
+            'website'       => $data['website'],
+            'logo'          => $data['logo'],
+            'bio'           => $data['bio'],
         ]);
     }
 }

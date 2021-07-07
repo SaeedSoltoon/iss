@@ -7,6 +7,7 @@ use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use Exception;
+use phpDocumentor\Reflection\Types\Boolean;
 use Str;
 
 /**
@@ -36,7 +37,7 @@ class InsuranceService extends BaseService
         DB::beginTransaction();
 
         try {
-            $user = $this->createInsurance($data);
+            $insurance = $this->createInsurance($data);
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -45,7 +46,7 @@ class InsuranceService extends BaseService
 
         DB::commit();
 
-        return $user;
+        return $insurance;
     }
 
     /**
@@ -56,6 +57,43 @@ class InsuranceService extends BaseService
     protected function createInsurance(array $data = []): Insurance
     {
         return $this->model::create([
+            'title'         => $data['title'],
+            'description'   => $data['description'],
+        ]);
+    }
+
+    /**
+     * @param  array  $data
+     *
+     * @return Insurance
+     * @throws GeneralException
+     * @throws \Throwable
+     */
+    public function update(array $data = []): Insurance
+    {
+        DB::beginTransaction();
+
+        try {
+            $insurance = $this->updateInsurance($data);
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            throw new GeneralException(__('There was a problem updating your Insurace product.'));
+        }
+
+        DB::commit();
+
+        return $insurance;
+    }
+
+    /**
+     * @param  array  $data
+     *
+     * @return Boolean
+     */
+    protected function updateInsurance(array $data = []): bool
+    {
+        return $this->model->update([
             'title'         => $data['title'],
             'description'   => $data['description'],
         ]);

@@ -63,19 +63,19 @@ class InsurancesController extends Controller
      */
     public function show($insuranceId)
     {
-        return $insuranceId;
+        return $this->insuranceService->with('companies')->getById($insuranceId);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreInsuranceRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $insuranceId)
+    public function update(StoreInsuranceRequest $request, $insuranceId)
     {
-        return $this->insuranceService->with('companies')->getById($insuranceId);
+        return $this->insuranceService->update($request->validated());
     }
 
     /**
