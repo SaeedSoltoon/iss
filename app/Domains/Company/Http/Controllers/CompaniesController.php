@@ -5,8 +5,9 @@ namespace App\Domains\Company\Http\Controllers;
 use App\Domains\Company\Http\Requests\StoreCompanyRequest;
 use App\Domains\Company\Services\CompanyService;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CompaniesController
+class CompaniesController extends Controller
 {
     /**
      * @var CompanyService
@@ -17,9 +18,10 @@ class CompaniesController
      * CompaniesController constructor.
      * @param  CompanyService  $CompanyService
      */
-    public function __constructor(CompanyService $companyService)
+    public function __construct(CompanyService $service)
     {
-        $this->companyService = $companyService;
+        $this->middleware('auth');
+        $this->companyService = $service;
     }
 
     /**

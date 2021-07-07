@@ -21,7 +21,7 @@ class ApiController extends Controller
     /**
      * @OA\Post(
      *     path="/api/auth/login",
-     *     tags={"auth"},
+     *     tags={"Auth"},
      *     summary="Login & return token",
      *   @OA\RequestBody(
      *     required=true,
@@ -92,9 +92,61 @@ class ApiController extends Controller
     }
 
     /**
-     * Get the authenticated User
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/auth/me",
+     *     tags={"Auth"},
+     *     summary="user profile",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response="200",
+     *         description="ok",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="user",
+     *                         type="object",
+     *                         @OA\Property(property="id", type="number"),
+     *                         @OA\Property(property="type", type="string"),
+     *                         @OA\Property(property="name", type="string"),
+     *                         @OA\Property(property="email", type="string"),
+     *                         @OA\Property(property="email_verified_at", type="datetime"),
+     *                         @OA\Property(property="password_changed_at", type="datetime"),
+     *                         @OA\Property(property="active", type="boolean"),
+     *                         @OA\Property(property="timezone", type="string"),
+     *                         @OA\Property(property="last_login_at", type="datetime"),
+     *                         @OA\Property(property="last_login_ip", type="string"),
+     *                         @OA\Property(property="to_be_logged_out", type="boolean"),
+     *                         @OA\Property(property="provider", type="string"),
+     *                         @OA\Property(property="provider_at", type="datetime"),
+     *                         @OA\Property(property="created_at", type="datetime"),
+     *                         @OA\Property(property="updated_at", type="datetime"),
+     *                         @OA\Property(property="deleted_at", type="datetime"),
+     *                         @OA\Property(property="avatar", type="string"),
+     *                         @OA\Property(property="permissions",  type="object"),
+     *                         @OA\Property(property="roles", type="object"),
+     *                     )
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="message",
+     *                         type="string"
+     *                     ),
+     *                 )
+     *             )
+     *         }
+     *     )
+     * )
      */
     public function me()
     {
@@ -102,9 +154,42 @@ class ApiController extends Controller
     }
 
     /**
-     * Log the user out (Invalidate the token)
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/auth/logout",
+     *     tags={"Auth"},
+     *     summary="Logout from Profile",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response="200",
+     *         description="Successfully logged out",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="message",
+     *                         type="string"
+     *                     ),
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="message",
+     *                         type="string"
+     *                     ),
+     *                 )
+     *             )
+     *         }
+     *     )
+     * )
      */
     public function logout()
     {
@@ -114,9 +199,51 @@ class ApiController extends Controller
     }
 
     /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/auth/refresh",
+     *     tags={"Auth"},
+     *     summary="refresh token",
+     *     security={{"bearerAuth":{}}},
+     *  @OA\Response(
+     *         response="200",
+     *         description="ok",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="access_token",
+     *                         type="string"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="token_type",
+     *                         type="string"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="expires_in",
+     *                         type="integer",
+     *                         description="number in seconds"
+     *                     )
+     *                 )
+     *             )
+     *         }
+     *     ),
+     *  @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         content={
+     *             @OA\MediaType(
+     *                 mediaType="application/json",
+     *                 @OA\Schema(
+     *                     @OA\Property(
+     *                         property="error",
+     *                         type="string"
+     *                     ),
+     *                 )
+     *             )
+     *         }
+     *     ),
+     * )
      */
     public function refresh()
     {

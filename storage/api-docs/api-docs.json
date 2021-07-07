@@ -70,6 +70,210 @@
                     }
                 }
             }
+        },
+        "/api/auth/me": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "user profile",
+                "operationId": "439cabd18d601137ca7ea0567f0c64a3",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "email_verified_at": {
+                                                    "type": "datetime"
+                                                },
+                                                "password_changed_at": {
+                                                    "type": "datetime"
+                                                },
+                                                "active": {
+                                                    "type": "boolean"
+                                                },
+                                                "timezone": {
+                                                    "type": "string"
+                                                },
+                                                "last_login_at": {
+                                                    "type": "datetime"
+                                                },
+                                                "last_login_ip": {
+                                                    "type": "string"
+                                                },
+                                                "to_be_logged_out": {
+                                                    "type": "boolean"
+                                                },
+                                                "provider": {
+                                                    "type": "string"
+                                                },
+                                                "provider_at": {
+                                                    "type": "datetime"
+                                                },
+                                                "created_at": {
+                                                    "type": "datetime"
+                                                },
+                                                "updated_at": {
+                                                    "type": "datetime"
+                                                },
+                                                "deleted_at": {
+                                                    "type": "datetime"
+                                                },
+                                                "avatar": {
+                                                    "type": "string"
+                                                },
+                                                "permissions": {
+                                                    "type": "object"
+                                                },
+                                                "roles": {
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Logout from Profile",
+                "operationId": "b2471a52aab5ab098565d71a02713468",
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged out",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/refresh": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "refresh token",
+                "operationId": "dc0f18b12412d6e8e0c2a9cbb4fec387",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "type": "string"
+                                        },
+                                        "expires_in": {
+                                            "description": "number in seconds",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
