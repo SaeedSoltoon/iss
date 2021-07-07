@@ -12,10 +12,21 @@ class Insurance extends Model
         SoftDeletes;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+    ];
+
+    /**
      * The Companies that have this type of Insurance.
      */
     public function companies()
     {
-        return $this->belongsToMany(InsuranceCompany::class);
+        return $this->belongsToMany(InsuranceCompany::class, 'company_insurance', 'insurance_id', 'company_id');
     }
 }

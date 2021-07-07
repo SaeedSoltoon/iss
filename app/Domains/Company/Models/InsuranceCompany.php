@@ -31,6 +31,6 @@ class InsuranceCompany extends Model
      */
     public function insurances()
     {
-        return $this->belongsToMany(Insurance::class);
+        return $this->belongsToMany(Insurance::class, 'company_insurance', 'company_id', 'insurance_id');
     }
 }

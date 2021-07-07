@@ -2,26 +2,26 @@
 
 namespace App\Domains\Company\Http\Controllers;
 
-use App\Domains\Company\Http\Requests\StoreCompanyRequest;
-use App\Domains\Company\Services\CompanyService;
+use App\Domains\Company\Http\Requests\StoreInsuranceRequest;
+use App\Domains\Company\Services\InsuranceService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CompaniesController extends Controller
+class InsurancesController extends Controller
 {
     /**
-     * @var CompanyService
+     * @var InsuranceService
      */
-    protected $companyService;
+    protected $insuranceService;
 
     /**
-     * CompaniesController constructor.
-     * @param  CompanyService  $CompanyService
+     * InsurancesController constructor.
+     * @param  InsuranceService  $insuranceService
      */
-    public function __construct(CompanyService $service)
+    public function __construct(InsuranceService $service)
     {
         $this->middleware('auth');
-        $this->companyService = $service;
+        $this->insuranceService = $service;
     }
 
     /**
@@ -31,7 +31,7 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        return $this->companyService->all();
+        return $this->insuranceService->all();
     }
 
     /**
@@ -41,7 +41,7 @@ class CompaniesController extends Controller
      */
     public function all()
     {
-        return $this->companyService->with('insurances')->all();
+        return $this->insuranceService->with('companies')->all();
     }
 
     /**
@@ -50,9 +50,9 @@ class CompaniesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCompanyRequest $request)
+    public function store(StoreInsuranceRequest $request)
     {
-        return $this->companyService->store($request->validated());
+        return $this->insuranceService->store($request->validated());
     }
 
     /**
@@ -61,9 +61,9 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($companyId)
+    public function show($insuranceId)
     {
-        return $this->companyService->with('insurances')->getById($companyId);
+        return $insuranceId;
     }
 
     /**
@@ -73,9 +73,9 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $companyId)
+    public function update(Request $request, $insuranceId)
     {
-        return $companyId;
+        return $this->insuranceService->with('companies')->getById($insuranceId);
     }
 
     /**
@@ -84,7 +84,7 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($insuranceId)
     {
         //
     }
