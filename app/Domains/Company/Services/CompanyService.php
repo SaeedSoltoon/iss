@@ -7,6 +7,7 @@ use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use Exception;
+use Str;
 
 /**
  * Class CompanyService.
@@ -56,12 +57,12 @@ class CompanyService extends BaseService
     {
         return $this->model::create([
             'title'         => $data['title'],
-            'slug'          => $data['slug'],
+            'slug'          => Str::slug($data['title']),
             'description'   => $data['description'],
             'website'       => $data['website'],
             'logo'          => $data['logo'],
             'bio'           => $data['bio'],
-            'created_by'    => $data['created_by'],
+            'created_by'    => auth()->id(),
         ]);
     }
 }
