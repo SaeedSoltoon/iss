@@ -10,7 +10,7 @@ After cloning the repository, make sure to copy `.env.example` to `.env` and edi
 
 _NOTE:_ If you want to use Docker setup process, make sure that `DB_HOST` param in `.env` file match the database service name that defines in `docker-compose.yml`, defaults is `iss-db`.
 
-If you have Docker on your machine skip below steps, and just follow the main ([Laravel-Installation-Guide](https://laravel.com/docs/8.x/installation)) guide to up and running the project.
+If you don't have Docker on your machine skip below steps, and just follow the main ([Laravel-Installation-Guide](https://laravel.com/docs/8.x/installation)) guide to up and running the project.
 
 ### Setup Using Docker
 
