@@ -7,7 +7,9 @@ This project makes lite use of DDD. It is not a requirement, and you can easily 
 ### Installation and Usage Instructions
 
 After cloning the repository, make sure to copy `.env.example` to `.env` and edit the params for your needs.
+
 _NOTE:_ If you want to use Docker setup process, make sure that `DB_HOST` param in `.env` file match the database service name that defines in `docker-compose.yml`, defaults is `iss-db`.
+
 If you have Docker on your machine skip below steps, and just follow the main ([Laravel-Installation-Guide](https://laravel.com/docs/8.x/installation)) guide to up and running the project.
 
 ### Setup Using Docker
