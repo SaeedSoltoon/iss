@@ -24,7 +24,7 @@ make init
 
 Above command tries to install the image and configure it for you. feel free to check it out and make changes if you want to.
 
--   After that run this command to start the container and runs the project.
+-   After that run this command to start the container, migrate database & seeds it, generate api Docs and runs the project.
 
 ```bash
 make up
@@ -45,6 +45,10 @@ You can check the mentioned urls in your browser, and if you want to stop it jus
 
 **User:** user@user.com  
 **Password:** secret
+
+If you want to consume api routes, you have to login trough `api/auth/login` with one of above credentials and provide the `access_token` in `Authorization Bearer` header.
+
+You have to logged in as adminitrator to check `PUT`, `POST` and `DELETE` routes.
 
 ### Official Laravel Boilerplate Documentation
 
