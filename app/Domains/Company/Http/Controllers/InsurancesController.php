@@ -89,6 +89,6 @@ class InsurancesController extends Controller
      */
     public function destroy($insuranceId)
     {
-        //
+        return $this->insuranceService->deleteById($insuranceId);
     }
 }
