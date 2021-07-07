@@ -8,7 +8,7 @@
         "/api/auth/login": {
             "post": {
                 "tags": [
-                    "auth"
+                    "Auth"
                 ],
                 "summary": "Login & return token",
                 "operationId": "a80bd0b5a103aa850a69329b0c482162",
@@ -74,7 +74,7 @@
         "/api/auth/me": {
             "post": {
                 "tags": [
-                    "auth"
+                    "Auth"
                 ],
                 "summary": "user profile",
                 "operationId": "439cabd18d601137ca7ea0567f0c64a3",
@@ -179,7 +179,7 @@
         "/api/auth/logout": {
             "post": {
                 "tags": [
-                    "auth"
+                    "Auth"
                 ],
                 "summary": "Logout from Profile",
                 "operationId": "b2471a52aab5ab098565d71a02713468",
@@ -225,7 +225,7 @@
         "/api/auth/refresh": {
             "post": {
                 "tags": [
-                    "auth"
+                    "Auth"
                 ],
                 "summary": "refresh token",
                 "operationId": "dc0f18b12412d6e8e0c2a9cbb4fec387",
@@ -273,6 +273,67 @@
                         "bearerAuth": []
                     }
                 ]
+            }
+        },
+        "/api/insurance-company": {
+            "get": {
+                "tags": [
+                    "Insurance Companies"
+                ],
+                "summary": "Get list of Insurance Companies",
+                "description": "Returns list of Insurance Companies",
+                "operationId": "getInsuranceCompanyList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/insurance-company/{companyId}/delete": {
+            "delete": {
+                "tags": [
+                    "Insurance Companies"
+                ],
+                "summary": "Delete existing Insurance Company",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteInsuranceCompany",
+                "parameters": [
+                    {
+                        "name": "companyId",
+                        "in": "path",
+                        "description": "company id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
             }
         }
     },
