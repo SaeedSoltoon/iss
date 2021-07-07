@@ -57,7 +57,6 @@ class CompanyService extends BaseService
     {
         return $this->model::create([
             'title'         => $data['title'],
-            'slug'          => Str::slug($data['title']),
             'description'   => $data['description'],
             'website'       => $data['website'],
             'logo'          => $data['logo'],

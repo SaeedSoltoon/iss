@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\InsuranceCompany;
+use App\Domains\Company\Models\InsuranceCompany;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InsuranceCompanyFactory extends Factory
@@ -25,7 +25,6 @@ class InsuranceCompanyFactory extends Factory
         $title = $this->faker->randomElement(['بیمه ایران', 'بیمه پارسیان', 'بیمه پاسارگاد', 'بیمه ملت', 'بیمه آسیا', 'بیمه ما', 'بیمه دانا', 'بیمه البرز', 'بیمه سامان', 'بیمه رازی', 'بیمه کوثر', 'بیمه سرمد', 'بیمه تعاون', 'بیمه سینا', 'بیمه آرمان']);
         return [
             'title'         => $title,
-            'slug'          => \Str::slug($title),
             'description'   => $this->faker->text,
             'website'       => $this->faker->url,
             'logo'          => $this->faker->imageUrl(),

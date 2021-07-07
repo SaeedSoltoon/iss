@@ -16,7 +16,6 @@ class CreateInsurancesTable extends Migration
         Schema::create('insurances', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug')->unique();
             $table->string('description');
             $table->softDeletes();
             $table->timestamps();

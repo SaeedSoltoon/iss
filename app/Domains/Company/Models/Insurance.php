@@ -3,6 +3,7 @@
 namespace App\Domains\Company\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Database\Factories\InsuranceFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,7 +19,6 @@ class Insurance extends Model
      */
     protected $fillable = [
         'title',
-        'slug',
         'description',
     ];
 
@@ -28,5 +28,15 @@ class Insurance extends Model
     public function companies()
     {
         return $this->belongsToMany(InsuranceCompany::class, 'company_insurance', 'insurance_id', 'company_id');
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return InsuranceFactory::new();
     }
 }

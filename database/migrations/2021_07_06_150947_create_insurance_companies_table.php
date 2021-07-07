@@ -16,7 +16,6 @@ class CreateInsuranceCompaniesTable extends Migration
         Schema::create('insurance_companies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug')->unique();
             $table->string('description');
             $table->string('website');
             $table->string('logo');
