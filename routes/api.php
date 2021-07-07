@@ -30,7 +30,7 @@ Route::group([
     'prefix' => 'insurance-company'
 ], function ($router) {
     Route::get('/', [CompaniesController::class, 'index']);
-    Route::post('new', [CompaniesController::class, 'store'])->middleware('is_super_admin');
+    Route::post('/', [CompaniesController::class, 'store'])->middleware('is_super_admin');
     Route::get('{company_id}/show', [CompaniesController::class, 'show']);
     Route::put('{company_id}/update', [CompaniesController::class, 'update']);
 });
