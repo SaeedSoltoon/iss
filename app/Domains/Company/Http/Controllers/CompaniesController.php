@@ -47,7 +47,6 @@ class CompaniesController extends Controller
      *      )
      * )
      *
-     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -58,6 +57,27 @@ class CompaniesController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *      path="/api/insurance-company/insurances",
+     *      operationId="getInsuranceCompanyListWithCompanies",
+     *      tags={"Insurance Companies"},
+     *      summary="Get list of Insurance Companies with related insurances.",
+     *      description="Returns list of Insurance Companies with insurances.",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/InsuranceCompanyResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     *
      * Display a listing of the resource with relations.
      *
      * @return \Illuminate\Http\Response
@@ -68,6 +88,56 @@ class CompaniesController extends Controller
     }
 
     /**
+     * @OA\Post(
+     *      path="/api/insurance-company",
+     *      operationId="sotreInsuranceCompany",
+     *      tags={"Insurance Companies"},
+     *      summary="Add new Insurance Company",
+     *      description="Add new Inusrance Company and returns it",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\RequestBody(
+     *        required=true,
+     *        @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(
+     *            @OA\Property(
+     *              property="title",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="description",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="website",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="logo",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="bio",
+     *              type="string",
+     *            ),
+     *          ),
+     *        ),
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/InsuranceResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     *
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -79,6 +149,40 @@ class CompaniesController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *      path="/api/insurance-company/{companyId}/show",
+     *      operationId="showInsuranceCompany",
+     *      tags={"Insurance Companies"},
+     *      summary="show existing Insurance Company",
+     *      description="retrieve a record and returns it",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\Parameter(
+     *          name="companyId",
+     *          description="company id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *         response="200",
+     *         description="ok",
+     *         @OA\JsonContent(ref="#/components/schemas/InsuranceCompany")
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
      * Display the specified resource.
      *
      * @param  int  $id
@@ -90,6 +194,69 @@ class CompaniesController extends Controller
     }
 
     /**
+     * @OA\Put(
+     *      path="/api/insurance-company/{companyId}/update",
+     *      operationId="updateInsuranceCompany",
+     *      tags={"Insurance Companies"},
+     *      summary="update existing Insurance Company",
+     *      description="Update a record and returns no content",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\RequestBody(
+     *        required=true,
+     *        @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(
+     *            @OA\Property(
+     *              property="title",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="description",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="website",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="logo",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="bio",
+     *              type="string",
+     *            ),
+     *          ),
+     *        ),
+     *      ),
+     *      @OA\Parameter(
+     *          name="insuranceId",
+     *          description="insurance id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
+     *
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

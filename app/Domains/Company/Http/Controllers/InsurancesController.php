@@ -30,6 +30,7 @@ class InsurancesController extends Controller
      *      tags={"Insurances"},
      *      summary="Get list of Insurances",
      *      description="Returns list of Insurances",
+     *      security={{"bearerAuth":{}}},
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -56,6 +57,27 @@ class InsurancesController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *      path="/api/insurance/companies",
+     *      operationId="getInsuranceListWithComapanies",
+     *      tags={"Insurances"},
+     *      summary="Get list of Insurances with Companies",
+     *      description="Returns list of Insurances",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/InsuranceResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
      * Display a listing of the resource with relations.
      *
      * @return \Illuminate\Http\Response
@@ -66,6 +88,44 @@ class InsurancesController extends Controller
     }
 
     /**
+     * @OA\Post(
+     *      path="/api/insurance",
+     *      operationId="sotreInsurance",
+     *      tags={"Insurances"},
+     *      summary="Add new Insurance",
+     *      description="Add new Inusrance and returns it",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\RequestBody(
+     *        required=true,
+     *        @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(
+     *            @OA\Property(
+     *              property="title",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="description",
+     *              type="string",
+     *            ),
+     *          ),
+     *        ),
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/InsuranceResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     *
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -77,6 +137,41 @@ class InsurancesController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *      path="/api/insurance/{insuranceId}/show",
+     *      operationId="showInsurance",
+     *      tags={"Insurances"},
+     *      summary="show existing Insurance",
+     *      description="retrieve a record and returns it",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\Parameter(
+     *          name="insuranceId",
+     *          description="insurance id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *         response="200",
+     *         description="ok",
+     *         @OA\JsonContent(ref="#/components/schemas/Insurance")
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
+     *
      * Display the specified resource.
      *
      * @param  int  $id
@@ -88,6 +183,57 @@ class InsurancesController extends Controller
     }
 
     /**
+     * @OA\Put(
+     *      path="/api/insurance/{insuranceId}/update",
+     *      operationId="updateInsurance",
+     *      tags={"Insurances"},
+     *      summary="update existing Insurance",
+     *      description="Update a record and returns no content",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\RequestBody(
+     *        required=true,
+     *        @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(
+     *            @OA\Property(
+     *              property="title",
+     *              type="string",
+     *            ),
+     *            @OA\Property(
+     *              property="description",
+     *              type="string",
+     *            ),
+     *          ),
+     *        ),
+     *      ),
+     *      @OA\Parameter(
+     *          name="insuranceId",
+     *          description="insurance id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
+     *
      * Update the specified resource in storage.
      *
      * @param  StoreInsuranceRequest  $request
@@ -109,6 +255,7 @@ class InsurancesController extends Controller
      *      tags={"Insurances"},
      *      summary="Delete existing Insurance",
      *      description="Deletes a record and returns no content",
+     *      security={{"bearerAuth":{}}},
      *      @OA\Parameter(
      *          name="insuranceId",
      *          description="insurance id",
